@@ -13,23 +13,13 @@
             <div class="panel-body">
                 <div id="my_camera"></div>
                 <form>
+
                     <input type="button" value="Tirar Foto" class="btn btn-success" onclick="tirarFoto()" />
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Imagem Capturada
-            </div>
-            <div class="panel-body">
-                <div id="results">Suas fotos apararecerão aqui</div>
-            </div>
-            <br />
-            <br />
-        </div>
-    </div>
+
     <div class="col-md-2"></div>
     <script src="~/webcamjs/webcam.js"></script>
     <script language="JavaScript">
@@ -44,14 +34,8 @@
     <script language="JavaScript">
         function tirarFoto() {
             Webcam.snap(function (data_uri) {
-                document.getElementById('results').innerHTML = '<img src="' +
-                    data_uri +
-                    '"/>';
-                Webcam.upload(data_uri,
-                    '/Camera/Capture',
-                    function (code, text) {
-                    alert('Foto capturada');
-                });
+                localStorage.setItem('data_uri', data_uri);
+                window.location.replace("../Imagem/Index");
             });
         }
     </script>

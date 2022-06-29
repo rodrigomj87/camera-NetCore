@@ -12,12 +12,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\cache.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\CameraPhotos\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.25" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Imagem Obtida";
+}
+
+<main>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <div class="form-group">
+            <span>@ViewBag.data_uri</span>
+            <div id="foto">Imagem</div>
+            <img src="@ViewBag.data_uri" />
+            <form>
+                <input type="button" value="cancelar" class="btn btn-info" onclick="cancelar()" />
+                <input type="button" value="Salvar" class="btn btn-success" onclick="salvar()" />
+            </form>
+        </div>
+    </div>
+</main>
+<script src="~/webcamjs/webcam.js"></script>
+<script language="JavaScript">
+
+    window.onload = function () {
+        var data_uri = localStorage.getItem('data_uri');
+
+        document.getElementById('foto').innerHTML = '<img src="' +
+            data_uri +
+            '"/>';
+
+    }
+
+    function salvar() {
+        var data_uri = localStorage.getItem('data_uri');
+        Webcam.upload(data_uri,
+            '/Imagem/Capture');
+        localStorage.removeItem('data_uri');
+        window.location.replace("../Camera/Capture");
+    }
+
+    function cancelar() {
+        window.location.replace("../Camera/Capture");
+    }
+</script>
